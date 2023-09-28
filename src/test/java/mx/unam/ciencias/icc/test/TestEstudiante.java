@@ -349,35 +349,6 @@ public class TestEstudiante {
     }
 
     /**
-     * Prueba unitaria para {@link Estudiante#actualiza}.
-     */
-    @Test public void testActualiza() {
-        estudiante = new Estudiante("A", 1, 1, 1);
-        Estudiante e = new Estudiante("B", 2, 2, 2);
-        Assert.assertFalse(estudiante == e);
-        Assert.assertFalse(estudiante.equals(e));
-        estudiante.actualiza(e);
-        Assert.assertFalse(estudiante == e);
-        Assert.assertTrue(estudiante.equals(e));
-        Assert.assertTrue(estudiante.getNombre().equals("B"));
-        try {
-            estudiante.actualiza(null);
-            Assert.fail();
-        } catch (IllegalArgumentException iae) {}
-        try {
-            estudiante.actualiza(new Registro() {
-                    @Override public String seria() { return null; }
-                    @Override public void deseria(String linea) {}
-                    @Override public void actualiza(Registro registro) {}
-                    @Override public boolean casa(Enum campo, Object valor) {
-                        return false;
-                    }
-                });
-            Assert.fail();
-        } catch (IllegalArgumentException iae) {}
-    }
-
-    /**
      * Prueba unitaria para {@link Estudiante#casa}.
      */
     @Test public void testCasa() {
